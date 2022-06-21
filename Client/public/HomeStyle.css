@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  background-color: hsl(185, 75%, 39%);
+  font-size: 18px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-size: auto;
+  background-image: url(/images/bg-pattern-top.svg),
+    url(/images/bg-pattern-bottom.svg);
+  background-repeat: no-repeat;
+  background-position: right 52vw bottom 35vh, left 48vw top 52vh;
+  background-position-x: right 52vw, left 48vw;
+  background-position-y: bottom 35vh, top 52vh;
+}
+
+.profile-card {
+  background-color: #ffffff;
+  border-radius: 13px;
+  display: block;
+  width: 328px;
+  height: 375px;
+  box-shadow: 1px 1px 2px hsl(0, 0%, 59%);
+}
+
+.card-background {
+  width: 328px;
+  border-radius: 13px 13px 0 0;
+}
+
+/* TOP HALF OF CARD */
+
+img {
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  margin-left: 35%;
+  margin-top: -20%;
+}
+
+/* BOTTOM HALF OF CARD */
+
+.top-desc {
+  text-align: center;
+}
+
+.name {
+  font-weight: 700;
+  padding: 0.5em;
+  color: hsl(229, 23%, 23%);
+}
+
+.age {
+  font-weight: 400;
+  color: #818184;
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+.city {
+  font-weight: 400;
+  margin-top: 0.3em;
+  color: #818184;
+  font-size: 15px;
+}
+
+.line {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0.5em;
+}
+
+.bottom-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  flex-direction: column;
+}
+
+.numbers {
+  color: hsl(229, 23%, 23%);
+  font-weight: 700;
+  display: block;
+  text-align: center;
+}
+
+.stats {
+  color: hsl(227, 10%, 46%);
+  font-weight: 400;
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.followers {
+  margin-right: 170px;
+}
+
+.likes {
+  margin-top: -38px;
+  margin-left: 10px;
+}
+
+.photos {
+  margin-top: -38px;
+  margin-left: 180px;
+}
+
+/* FOOTER */
+
+.attribution {
+  font-size: 12px;
+  padding: 5em;
+  width: 100%;
+}

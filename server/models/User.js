@@ -1,5 +1,6 @@
 // i will use mongoose
 const mongoose = require("mongoose");
+const findOrCreate = require("mongoose-findorcreate");
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -26,5 +27,10 @@ const UserSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
+  google_id: {
+    type: String,
+    default: " ",
+  },
 });
+UserSchema.plugin(findOrCreate);
 module.exports = User = mongoose.model("User", UserSchema);
