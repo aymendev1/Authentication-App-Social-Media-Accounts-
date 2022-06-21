@@ -2,7 +2,8 @@ const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const User = require("../models/User");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const mongoose = require("mongoose");
+const GitHubStrategy = require("passport-github2").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 const bcrypt = require("bcrypt"); // to encrypt password
 
 passport.serializeUser(function (user, result) {
@@ -77,6 +78,87 @@ passport.use(
           } else {
             //found user. Return
             return result(err, user);
+          }
+        }
+      );
+    }
+  )
+);
+// Github Oauth Passport Strategy:
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: "http://localhost:5000/auth/github/callback",
+    },
+    function (accessToken, refreshToken, profile, done) {
+      //check user table for anyone with a Github ID
+      User.findOne(
+        {
+          github_id: profile.id,
+        },
+        function (err, user) {
+          if (err) {
+            return done(err);
+          }
+          //No user was found... so create a new user with values from Google (all the profile. stuff)
+          if (!user) {
+            user = new User({
+              name: profile._json.name,
+              email: profile._json.email,
+              //Node Id as default password till the user change it
+              password: profile._json.node_id,
+              avatar: profile._json.avatar_url,
+              github_id: profile.id,
+            });
+            user.save(function (err) {
+              if (err) console.log(err);
+              return done(err, user);
+            });
+          } else {
+            //found user. Return
+            return done(err, user);
+          }
+        }
+      );
+    }
+  )
+);
+//Facebook Oauth Passport Strategy:
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      callbackURL: "http://localhost:5000/auth/facebook/callback",
+    },
+    function (accessToken, refreshToken, profile, done) {
+      //check user table for anyone with a Facebook ID
+      User.findOne(
+        {
+          facebook_id: profile.id,
+        },
+        function (err, user) {
+          if (err) {
+            return done(err);
+          }
+          //No user was found... so create a new user with values from Google (all the profile. stuff)
+          if (!user) {
+            user = new User({
+              name: profile._json.name,
+              email: profile._json.id + "@facebook.com",
+              //Node Id as default password till the user change it
+              password: profile._json.id,
+              facebook_id: profile._json.id,
+            });
+            user.save(function (err) {
+              if (err) console.log(err);
+              return done(err, user);
+            });
+          } else {
+            //found user. Return
+            return done(err, user);
           }
         }
       );

@@ -80,7 +80,7 @@ router.post(
   })
 );
 // @route  Postapi/user/login
-// @desc   Login User By Google using PassportJS
+// @desc   Login / Register User By Google using PassportJS
 // @access Public
 router.get(
   "/auth/google",
@@ -90,6 +90,35 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
+    successRedirect: "/home",
+    failureRedirect: "/login/failed",
+  })
+);
+// @route  Postapi/user/login
+// @desc   Login / Register User By Github using PassportJS
+// @access Public
+
+router.get(
+  "/auth/github",
+  passport.authenticate("github", { scope: ["user:email"] })
+);
+
+router.get(
+  "/auth/github/callback",
+  passport.authenticate("github", {
+    successRedirect: "/home",
+    failureRedirect: "/login/failed",
+  })
+);
+// @route  Postapi/user/login
+// @desc   Login / Register User with Facebook using PassportJS
+// @access Public
+
+router.get("/auth/facebook", passport.authenticate("facebook"));
+
+router.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", {
     successRedirect: "/home",
     failureRedirect: "/login/failed",
   })

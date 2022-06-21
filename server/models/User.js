@@ -29,7 +29,12 @@ const UserSchema = new mongoose.Schema({
   },
   google_id: {
     type: String,
-    default: " ",
+  },
+  github_id: {
+    type: String,
+  },
+  facebook_id: {
+    type: String,
   },
 });
 UserSchema.plugin(findOrCreate);
