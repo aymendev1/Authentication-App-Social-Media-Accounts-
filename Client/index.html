@@ -13,7 +13,7 @@
 <body>
   <main>
     <div class="profile-card">
-      <section>
+      <div>
         <svg class="card-background" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
             <linearGradient x1="50%" y1=".779%" x2="50%" y2="100%" id="c">
@@ -127,16 +127,20 @@
             </g>
           </g>
         </svg>
-      </section>
-      <section class="bottom-card">
-        <img id="avatar" alt=" Profile Image">
+      </div>
+      <div class="bottom-card">
+        <img id="avatar" src="https://herrmans.eu/wp-content/uploads/2019/01/765-default-avatar.png"
+          alt=" Profile Image">
         <div class="top-desc">
           <h3 class="name" id="Name">Loading</h3>
-          <p class="city" id="email">Loading</p>
+          <p class="email" id="email">Loading</p>
         </div>
-      </section>
+        <button class="button" id="btn" href="/logout"> Log Out
+        </button>
+
+      </div>
     </div>
-    <div class="attribution">Coded by <a href="#">Aymen</a>.
+    <div class="attribution">Coded by <a href="https://github.com/aymendev1">Aymen</a>.
     </div>
   </main>
 </body>
@@ -144,7 +148,7 @@
   const avatar = document.getElementById("avatar");
   const name = document.getElementById("Name");
   const email = document.getElementById("email");
-
+  const btn = document.getElementById("btn");
   async function getData() {
     try {
       const data = await fetch("/datajson");
@@ -152,14 +156,19 @@
       //Setting up data
       email.innerText = user.email;
       name.innerText = user.name;
-      avatar.setAttribute("src", user.avatar);
+      if (user.avatar != null) {
+        avatar.setAttribute("src", user.avatar);
+      }
+
     } catch (e) {
       alert("Error Loading Data")
-      res.redirect("/")
+      console.log(e)
     }
 
   }
-
+  btn.addEventListener("click", () => {
+    window.location = "/logout"
+  })
   getData();
 </script>
 

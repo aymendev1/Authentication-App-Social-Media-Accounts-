@@ -123,5 +123,17 @@ router.get(
     failureRedirect: "/login/failed",
   })
 );
+// @route  Postapi/user/logout
+// @desc   Logout Users
+// @access Public
+router.get("/logout", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    // if you're using express-flash
+    res.redirect("/");
+  });
+});
 
 module.exports = router;

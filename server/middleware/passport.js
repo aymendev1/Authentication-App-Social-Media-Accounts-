@@ -94,6 +94,7 @@ passport.use(
     },
     function (accessToken, refreshToken, profile, done) {
       //check user table for anyone with a Github ID
+
       User.findOne(
         {
           github_id: profile.id,
@@ -103,22 +104,26 @@ passport.use(
             return done(err);
           }
           //No user was found... so create a new user with values from Google (all the profile. stuff)
-          if (!user) {
-            user = new User({
-              name: profile._json.name,
-              email: profile._json.email,
-              //Node Id as default password till the user change it
-              password: profile._json.node_id,
-              avatar: profile._json.avatar_url,
-              github_id: profile.id,
-            });
-            user.save(function (err) {
-              if (err) console.log(err);
+          try {
+            if (!user) {
+              user = new User({
+                name: profile._json.name,
+                email: profile._json.email,
+                //Node Id as default password till the user change it
+                password: profile._json.node_id,
+                avatar: profile._json.avatar_url,
+                github_id: profile.id,
+              });
+              user.save(function (err) {
+                if (err) console.log(err);
+                return done(err, user);
+              });
+            } else {
+              //found user. Return
               return done(err, user);
-            });
-          } else {
-            //found user. Return
-            return done(err, user);
+            }
+          } catch (error) {
+            return alert(error);
           }
         }
       );

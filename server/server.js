@@ -27,7 +27,6 @@ app.use(passport.session());
 async function isLoggedIn(req, res, next) {
   (await req.user) ? next() : res.sendStatus(401);
 }
-
 app.get("/", (req, res) => {
   res.sendFile("/Client/AuthPage.html", { root: ".." });
 });
@@ -53,6 +52,7 @@ app.get("/datajson", isLoggedIn, async (req, res) => {
     res.status(400).json({ sucess: false, data: e });
   }
 });
+
 app.use("/", require("./routes/auth.route"));
 app.use((req, res) => {
   res.status(404).json({

@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Joan&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +6,7 @@
 }
 
 body {
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: "Joan", serif;
   background-color: hsl(185, 75%, 39%);
   font-size: 18px;
 }
@@ -21,23 +20,36 @@ main {
   align-items: center;
   align-content: center;
   background-size: auto;
-  background-image: url(/images/bg-pattern-top.svg),
-    url(/images/bg-pattern-bottom.svg);
+  background: #00f260; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #0575e6,
+    #00f260
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #0575e6,
+    #00f260
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-repeat: no-repeat;
-  background-position: right 52vw bottom 35vh, left 48vw top 52vh;
-  background-position-x: right 52vw, left 48vw;
-  background-position-y: bottom 35vh, top 52vh;
 }
 
 .profile-card {
   background-color: #ffffff;
   border-radius: 13px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 328px;
   height: 375px;
   box-shadow: 1px 1px 2px hsl(0, 0%, 59%);
 }
-
+.bottom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .card-background {
   width: 328px;
   border-radius: 13px 13px 0 0;
@@ -48,8 +60,9 @@ main {
 img {
   border-radius: 50%;
   border: 5px solid #ffffff;
-  margin-left: 35%;
-  margin-top: -20%;
+  margin-top: -50%;
+  height: 150px;
+  width: 150px;
 }
 
 /* BOTTOM HALF OF CARD */
@@ -62,70 +75,83 @@ img {
   font-weight: 700;
   padding: 0.5em;
   color: hsl(229, 23%, 23%);
+  font-size: 1.2em;
 }
 
-.age {
-  font-weight: 400;
-  color: #818184;
-  margin-left: 5px;
-  font-size: 18px;
-}
-
-.city {
+.email {
   font-weight: 400;
   margin-top: 0.3em;
   color: #818184;
-  font-size: 15px;
+  font-size: 1em;
+}
+/* From uiverse.io */
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid #4f4f4f;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 19px;
+  color: black;
+  font-family: "Joan", serif;
+  z-index: 1;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
-.line {
-  border-bottom: 1px solid #e8e8e8;
-  padding: 0.5em;
-}
-
-.bottom-stats {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 25px;
-  flex-direction: column;
-}
-
-.numbers {
-  color: hsl(229, 23%, 23%);
-  font-weight: 700;
+.button:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: transparent;
+  border-radius: 50%;
   display: block;
-  text-align: center;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
 }
 
-.stats {
-  color: hsl(227, 10%, 46%);
-  font-weight: 400;
+.button:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #39bda7;
+  border-radius: 50%;
   display: block;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-align: center;
-  margin-top: 2px;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
 }
 
-.followers {
-  margin-right: 170px;
+.button:hover {
+  color: #ffffff;
+  border: 1px solid #39bda7;
 }
 
-.likes {
-  margin-top: -38px;
-  margin-left: 10px;
+.button:hover:before {
+  top: -35%;
+  background-color: #39bda7;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
-.photos {
-  margin-top: -38px;
-  margin-left: 180px;
+.button:hover:after {
+  top: -45%;
+  background-color: #39bda7;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
-
 /* FOOTER */
 
 .attribution {
-  font-size: 12px;
+  text-align: center;
+  font-size: 0.6em;
   padding: 5em;
   width: 100%;
 }
