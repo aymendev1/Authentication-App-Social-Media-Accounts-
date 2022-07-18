@@ -91,7 +91,7 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     successRedirect: "/home",
-    failureRedirect: "/login/failed",
+    failureRedirect: "/404",
   })
 );
 // @route  Postapi/user/login
@@ -107,7 +107,7 @@ router.get(
   "/auth/github/callback",
   passport.authenticate("github", {
     successRedirect: "/home",
-    failureRedirect: "/login/failed",
+    failureRedirect: "/404",
   })
 );
 // @route  Postapi/user/login
@@ -120,7 +120,7 @@ router.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", {
     successRedirect: "/home",
-    failureRedirect: "/login/failed",
+    failureRedirect: "/404",
   })
 );
 // @route  Postapi/user/logout

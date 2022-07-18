@@ -42,7 +42,6 @@ main {
   flex-direction: column;
   align-items: center;
   width: 328px;
-  height: 375px;
   box-shadow: 1px 1px 2px hsl(0, 0%, 59%);
 }
 .bottom-card {
@@ -97,7 +96,7 @@ img {
   color: black;
   font-family: "Joan", serif;
   z-index: 1;
-  margin-top: 20px;
+  margin: 20px 0;
   cursor: pointer;
 }
 

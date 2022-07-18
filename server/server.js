@@ -52,7 +52,9 @@ app.get("/datajson", isLoggedIn, async (req, res) => {
     res.status(400).json({ sucess: false, data: e });
   }
 });
-
+app.get("/404", async (req, res) => {
+  res.sendFile("/Client/404.html", { root: ".." });
+});
 app.use("/", require("./routes/auth.route"));
 app.use((req, res) => {
   res.status(404).json({
