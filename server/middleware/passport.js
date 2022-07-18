@@ -17,6 +17,7 @@ passport.deserializeUser(function (user, result) {
     return result(null, user);
   });
 });
+
 // Db login Strategy
 passport.use(
   new localStrategy(
@@ -44,6 +45,7 @@ passport.use(
     }
   )
 );
+
 // Google Oauth Passport Strategy:
 passport.use(
   new GoogleStrategy(
@@ -71,6 +73,11 @@ passport.use(
               avatar: profile._json.picture,
               google_id: profile._json.sub,
             });
+            //encrypt password
+            const salt = bcrypt.genSalt(10); // gen salt contains 10
+            // Save password
+            user.password = bcrypt.hash(password, salt); // User Password and salt to hash  password
+            // save user in db
             user.save(function (err) {
               if (err) console.log(err);
               return result(err, user);
@@ -84,6 +91,7 @@ passport.use(
     }
   )
 );
+
 // Github Oauth Passport Strategy:
 passport.use(
   new GitHubStrategy(
@@ -114,9 +122,14 @@ passport.use(
                 avatar: profile._json.avatar_url,
                 github_id: profile.id,
               });
+              //encrypt password
+              const salt = bcrypt.genSalt(10); // gen salt contains 10
+              // Save password
+              user.password = bcrypt.hash(password, salt); // User Password and salt to hash  password
+              // save user in db
               user.save(function (err) {
                 if (err) console.log(err);
-                return done(err, user);
+                return result(err, user);
               });
             } else {
               //found user. Return
@@ -130,6 +143,7 @@ passport.use(
     }
   )
 );
+
 //Facebook Oauth Passport Strategy:
 passport.use(
   new FacebookStrategy(
@@ -157,9 +171,14 @@ passport.use(
               password: profile._json.id,
               facebook_id: profile._json.id,
             });
+            //encrypt password
+            const salt = bcrypt.genSalt(10); // gen salt contains 10
+            // Save password
+            user.password = bcrypt.hash(password, salt); // User Password and salt to hash  password
+            // save user in db
             user.save(function (err) {
               if (err) console.log(err);
-              return done(err, user);
+              return result(err, user);
             });
           } else {
             //found user. Return
