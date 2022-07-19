@@ -18,7 +18,7 @@ This is a small app or a project which you can fork on your future Apps , it con
 
 ### How To Use
 
-- First of all , you should create a .env file on the following path ( server/config ) for the Secret Keys of each platform and link to your DB,
+- First of all , After Foring the project ,you should create a .env file on the following path ( server/config ) for the Secret Keys of each platform and link to your DB,
   then fill in the following Form and past it on the file
 
 ---
@@ -35,12 +35,12 @@ This is a small app or a project which you can fork on your future Apps , it con
 
 ---
 
-- Google Client ID = [Click Me !]()
-- Google Client Secret = [Click Me !]()
-- Github Client ID = [Click Me !]()
-- Github Client Secret = [Click Me !]()
-- Facebook App ID = [Click Me !]()
-- Facebook App Secret = [Click Me !]()
+- Google Client ID = [Click Me !](https://www.balbooa.com/gridbox-documentation/how-to-get-google-client-id-and-client-secret)
+- Google Client Secret = [Click Me !](https://www.balbooa.com/gridbox-documentation/how-to-get-google-client-id-and-client-secret)
+- Github Client ID = [Click Me !](https://www.knowband.com/blog/user-manual/get-github-client-id-client-secret-api-details/)
+- Github Client Secret = [Click Me !](https://www.knowband.com/blog/user-manual/get-github-client-id-client-secret-api-details/)
+- Facebook App ID = [Click Me !](https://goldplugins.com/documentation/wp-social-pro-documentation/how-to-get-an-app-id-and-secret-key-from-facebook/)
+- Facebook App Secret = [Click Me !](https://goldplugins.com/documentation/wp-social-pro-documentation/how-to-get-an-app-id-and-secret-key-from-facebook/)
 
 ### The challenge
 
@@ -71,8 +71,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Click me !!](https://github.com/aymendev1/Login-SignUp-Forum---Client-and-Server-side--)
-- Live Site URL: [Click me !!](#)
+- Solution URL: [Click me !!](https://github.com/aymendev1/Authentication-App-Social-Media-Accounts-)
 
 ### Built with
 
